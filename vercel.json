@@ -1,8 +1,17 @@
 {
+  "version": 2,
+  "public": true,
   "headers": [
     {
-      "source": "/videos/(.*).mp4",
-      "headers": [{ "key": "Content-Type", "value": "video/mp4" }]
+      "source": "/videos/(.*)\\.mp4",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000" },
+        { "key": "Content-Type", "value": "video/mp4" }
+      ]
     }
+  ],
+  "routes": [
+    { "src": "/videos/(.*)", "dest": "/videos/$1" },
+    { "src": "/(.*)", "dest": "/$1" }
   ]
 }
